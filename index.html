@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js demo-4">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Start</title>
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+		<!-- custom demo style -->
+		<link rel="stylesheet" type="text/css" href="css/demo4.css" />
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="bb-custom-wrapper">
+				<div id="bb-bookblock" class="bb-bookblock">
+					<div class="bb-item">
+						<div class="center-both">
+							<h1>What’s On Your Plate?</h1>
+							<h2>How “healthy” meals have changed over time.</h2>
+							<br/>
+							<br/>
+							<h1>Swipe to begin &#10554;</h1>
+						</div>
+					</div>
+					<div class="bb-item">
+						<div class="center-both">
+							<h1>1900: Plain American fare</h1>
+
+							<img src="img\5_1_12.jpg"/>
+							<!-- 5+1+12 
+							<img src="img\5.jpg"/>
+							<img src="img\1.jpg"/>
+							<img src="img\12.jpg"/>
+							-->
+						</div>
+								
+					</div>
+					<div class="bb-item">
+						<div class="center-both">
+							<h2>In 1900, doctors advised Americans to steer clear of spicy foods. A plain diet with lots of meat and dairy was thought to improve digestion.</h2>
+							<br/>
+							<h2>A typical dinner might consist of chicken pudding, mashed potatoes, and creamed cabbage…</h2>
+							<img src="img\11.jpg"/>
+						</div>
+					</div>
+					<div class="bb-item">
+						<div class="center-both">
+							<h1>…with a side of Waldorf salad…</h1>
+							<img src="img\15.jpg"/>
+						</div>
+					</div>
+					<div class="bb-item">
+						<div class="center-both">
+							<h1>…and fruitcake for dessert!</h1>
+							<img src="img\3.jpg"/>
+						</div>
+					</div>
+					<div class="bb-item">
+						<div class="center-both">
+							<h1>More to come...</h1>
+						</div>
+					</div>					
+					
+				</div>
+
+				<nav>
+					<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
+					<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
+					<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
+					<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
+				</nav>
+
+			</div>
+
+		</div><!-- /container -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquerypp.custom.js"></script>
+		<script src="js/jquery.bookblock.js"></script>
+		<script>
+			var Page = (function() {
+				
+				var config = {
+						$bookBlock : $( '#bb-bookblock' ),
+						$navNext : $( '#bb-nav-next' ),
+						$navPrev : $( '#bb-nav-prev' ),
+						$navFirst : $( '#bb-nav-first' ),
+						$navLast : $( '#bb-nav-last' )
+					},
+					init = function() {
+						config.$bookBlock.bookblock( {
+							speed : 1000,
+							shadowSides : 0.8,
+							shadowFlip : 0.4
+						} );
+						initEvents();
+					},
+					initEvents = function() {
+						
+						var $slides = config.$bookBlock.children();
+
+						// add navigation events
+						config.$navNext.on( 'click touchstart', function() {
+							config.$bookBlock.bookblock( 'next' );
+							return false;
+						} );
+
+						config.$navPrev.on( 'click touchstart', function() {
+							config.$bookBlock.bookblock( 'prev' );
+							return false;
+						} );
+
+						config.$navFirst.on( 'click touchstart', function() {
+							config.$bookBlock.bookblock( 'first' );
+							return false;
+						} );
+
+						config.$navLast.on( 'click touchstart', function() {
+							config.$bookBlock.bookblock( 'last' );
+							return false;
+						} );
+						
+						// add swipe events
+						$slides.on( {
+							'swipeleft' : function( event ) {
+								config.$bookBlock.bookblock( 'next' );
+								return false;
+							},
+							'swiperight' : function( event ) {
+								config.$bookBlock.bookblock( 'prev' );
+								return false;
+							}
+						} );
+
+						// add keyboard events
+						$( document ).keydown( function(e) {
+							var keyCode = e.keyCode || e.which,
+								arrow = {
+									left : 37,
+									up : 38,
+									right : 39,
+									down : 40
+								};
+
+							switch (keyCode) {
+								case arrow.left:
+									config.$bookBlock.bookblock( 'prev' );
+									break;
+								case arrow.right:
+									config.$bookBlock.bookblock( 'next' );
+									break;
+							}
+						} );
+					};
+
+					return { init : init };
+
+			})();
+		</script>
+		<script>
+				Page.init();
+				
+				var imgArr = [
+					"placeholder", 
+					"1900s-Dessert-1.jpg",
+					"1900s-Dessert-2.jpg",
+					"1900s-Dessert-3.jpg",
+					"1900s-Dessert-4.jpg",
+					"1900s-Main-1.jpg",
+					"1900s-Main-2.jpg",
+					"1900s-Main-3.jpg",
+					"1900s-Main-4.jpg",
+					"1900s-Main-5.jpg",
+					"1900s-Main-6.jpg",
+					"1900s-Main-7.jpg",
+					"1900s-Salad-1.jpg",
+					"1900s-Salad-2.jpg",
+					"1900s-Salad-3.jpg",
+					"1900s-Salad-4.jpg",
+					"1900s-Salad-5.jpg",
+					"1900s-Salad-6.jpg",
+					"1900s-Salad-7.jpg",
+					"1900s-Salad-8.jpg",
+					"1920s-Dessert-1.jpg",
+					"1920s-Dessert-2.jpg",
+					"1920s-Dessert-3.jpg",
+					"1920s-Dessert-4.jpg",
+					"1920s-Dessert-5.jpg",
+					"1920s-Dinner-1.jpg",
+					"1920s-Dinner-2.jpg",
+					"1920s-Dinner-3.jpg",
+					"1920s-Dinner-4.jpg",
+					"1920s-Dinner-5.jpg",
+					"1920s-Salad-1.jpg",
+					"1920s-Salad-2.jpg",
+					"1920s-Salad-3-2.jpg",
+					"1920s-Salad-4.jpg",
+					"1940s-Dessert-1.jpg",
+					"1940s-Dessert-2.jpg",
+					"1940s-Dessert-3-2.jpg",
+					"1940s-Dessert-4.jpg",
+					"1940s-Dessert-5.jpg",
+					"1940s-Dessert-6.jpg",
+					"1940s-Dinner-1.jpg",
+					"1940s-Dinner-2.jpg",
+					"1940s-Dinner-3.jpg",
+					"1940s-Dinner-4.jpg",
+					"1940s-Dinner-5.jpg",
+					"1940s-Dinner-6.jpg",
+					"1940s-Dinner-7.jpg",
+					"1940s-Dinner-8.jpg",
+					"1940s-Side-1.jpg",
+					"1940s-Side-2.jpg",
+					"1940s-Side-3.jpg",
+					"1940s-Side-4.jpg",
+					"1940s-Side-5.jpg",
+					"1940s-Side-6.jpg",
+					"1940s-Side-7.jpg",
+					"1940s-Side-8.jpg",
+					"1950s-Dessert-1.jpg",
+					"1950s-Dessert-2.jpg",
+					"1950s-Dessert-3.jpg",
+					"1950s-Dessert-4.jpg",
+					"1950s-Dessert-5.jpg",
+					"1950s-Dessert-6.jpg",
+					"1950s-Dessert-7.jpg",
+					"1950s-Dinner-1.jpg",
+					"1950s-Dinner-2.jpg",
+					"1950s-Dinner-3.jpg",
+					"1950s-Dinner-4.jpg",
+					"1950s-Dinner-5.jpg",
+					"1950s-Dinner-6.jpg",
+					"1950s-Dinner-7.jpg",
+					"1970sDessert-1.jpg",
+					"1970sDessert-2.jpg",
+					"1970sDinner-1.jpg",
+					"1970sDinner-2.jpg",
+					"1970sDinner-3.jpg",
+					"1970sDinner-4.jpg",
+					"1970sSalad-1.jpg",
+					"1970sSalad-2.jpg",
+					"1970sSalad-3.jpg",
+					"1970sSalad-4.jpg",
+					"1970sSalad-5.jpg",
+					"1990sDinner-1.jpg",
+					"1990sDinner-2.jpg",
+					"1990sDinner-3.jpg",
+					"1990sDinner-4.jpg",
+					"1990sSalad-1.jpg",
+					"1990sSalad-2.jpg",
+					"1990sSalad-3.jpg",
+					"1990sSalad-4.jpg",
+					"1990sSalad-5.jpg",
+					"Dunkaroos-1657.jpg",
+					"Dunkaroos-1658.jpg"
+				];
+		</script>
+	</body>
+</html>
