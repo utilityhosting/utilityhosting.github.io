@@ -157,6 +157,12 @@
 	
 }
 
+.center-both span.question {
+	font-size: 20.25em;
+	
+	/*font-weight: 300;*/
+}
+
 .bb-custom-icon:before {
 	font-family: 'arrows';
 	speak: none;
